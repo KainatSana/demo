@@ -21,7 +21,7 @@ jobs:
 
       - name: Sync Files to S3
         run: |
-          aws s3 sync ./demo s3://kainat-demo-site --delete
+          aws s3 sync ./DEMO s3://kainat-demo-site --delete
 
       - name: Verify S3 Contents
         run: |
