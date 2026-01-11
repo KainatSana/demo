@@ -21,4 +21,8 @@ jobs:
 
       - name: Sync Files to S3
         run: |
-          aws s3 sync . s3://kainat-demo-site --delete --exclude ".git/*" --exclude ".github/*"
+          aws s3 sync ./demo s3://kainat-demo-site --delete
+
+      - name: Verify S3 Contents
+              run: |
+                aws s3 ls s3://kainat-demo-site --recursive
