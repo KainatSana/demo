@@ -21,7 +21,7 @@ jobs:
 
       - name: Sync Files to S3
         run: |
-          aws s3 sync s3://kainat-demo-site --recursive
+          aws s3 sync . s3://kainat-demo-site --recursive
 
       - name: Verify S3 Contents
         run: |
