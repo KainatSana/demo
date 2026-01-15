@@ -20,7 +20,8 @@ jobs:
           aws-region: us-east-1
 
       - name: Deploy to S3
-        run: aws s3 sync site s3://kainat-demo-website --delete
+        run: aws s3 sync . s3://kainat-demo-website --exclude ".git/*" --exclude ".github/*" --delete
+
 
       - name: Verify upload
         run: aws s3 ls s3://kainat-demo-website
