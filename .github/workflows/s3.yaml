@@ -1,4 +1,4 @@
-name: Deploy to S3
+name: Deploy HTML to S3
 
 on:
   push:
@@ -12,17 +12,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 18
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Build
-        run: npm run build
-
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
@@ -31,4 +20,7 @@ jobs:
           aws-region: us-east-1
 
       - name: Deploy to S3
-        run: aws s3 sync build s3://kainat-demo-website --delete
+        run: aws s3 sync site s3://kainat-demo-website --delete
+
+      - name: Verify upload
+        run: aws s3 ls s3://kainat-demo-website
